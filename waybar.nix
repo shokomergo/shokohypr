@@ -14,10 +14,17 @@
       
       modules-left = [ ]; 
       modules-center = [ "clock" ];
-      modules-right = [ "backlight" "network" "bluetooth" "pulseaudio" ];
+      modules-right = [ "custom/screen-time" "network" "backlight" "bluetooth" "pulseaudio" ];
 
       "clock" = { 
         format = " {:%H:%M}"; 
+      };
+
+      "custom/screen-time" = {
+        exec = "/etc/nixos/shokohypr/modules/rust-screen_time--bin/target/release/rust-screen_time--bin";
+        return-type = "json";
+        format = "{}";
+        tooltip = true;
       };
 
       "backlight" = {
@@ -66,7 +73,12 @@
         padding: 0 5px;
       }
 
-      #backlight, #network, #bluetooth, #pulseaudio, #clock {
+      #custom-screen-time {
+        margin-right: 15px;
+        font-weight: bold;
+      }
+
+      #backlight, #network, #bluetooth, #pulseaudio, #clock, #custom-screen-time {
         padding: 0 8px;
         color: #ffffff;
       }
