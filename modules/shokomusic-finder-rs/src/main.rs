@@ -5,6 +5,7 @@ use::serde_json::Value;
 
 //noinspection RsUnresolvedMethod
 fn main() {
+    let _ = Command::new("pkill").arg("wofi").status().unwrap();
     let child = Command::new("wofi")
     .args(&[
         "--show", "dmenu",
