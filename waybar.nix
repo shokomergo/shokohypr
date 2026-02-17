@@ -14,7 +14,7 @@
       
       modules-left = [ ]; 
       modules-center = [ "clock" ];
-      modules-right = [ "custom/screen-time" "network" "backlight" "bluetooth" "pulseaudio" ];
+      modules-right = [ "custom/screen-time" "custom/shoko-finder" "network" "backlight" "bluetooth" "pulseaudio" ];
 
       "clock" = { 
         format = " {:%H:%M}"; 
@@ -25,6 +25,12 @@
         return-type = "json";
         format = "{}";
         tooltip = true;
+      };
+
+      "custom/shoko-finder" = {
+        format = "󰎆";
+        on-click = "/etc/nixos/shokohypr/modules/shokomusic-finder-rs/target/release/shokomusic-finder-rs";
+        tooltip = false;
       };
 
       "backlight" = {
@@ -70,15 +76,25 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 10px;
         color: #ffffff;
-        padding: 0 5px;
+        padding: 0 10px;
       }
 
       #custom-screen-time {
-        margin-right: 15px;
         font-weight: bold;
+        padding: 0 5px;
       }
 
-      #backlight, #network, #bluetooth, #pulseaudio, #clock, #custom-screen-time {
+      #custom-shoko-finder {
+        color: #ffffff;
+        padding: 0 8px;
+        font-size: 15px;
+      }
+
+      #custom-shoko-finder:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      #backlight, #network, #bluetooth, #pulseaudio, #clock {
         padding: 0 8px;
         color: #ffffff;
       }
