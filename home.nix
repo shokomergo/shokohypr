@@ -14,7 +14,7 @@
     pavucontrol blueman networkmanagerapplet wlogout brightnessctl
     playerctl cava libnotify firefox-devedition-bin
     font-awesome nerdfonts papirus-icon-theme
-    kdePackages.dolphin swww
+    kdePackages.dolphin swww grim slurp grimblast
   ];
 
   home.file.".bashrc".text = ''
@@ -112,11 +112,14 @@
         "SUPER, up, movefocus, u"
         "SUPER, down, movefocus, d"
         "SUPER, A, exec, /etc/nixos/shokohypr/modules/shokomusic-finder-rs/target/release/shokomusic-finder-rs"
+        ", F12, exec, grimblast --notify save screen ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png"
+        "SHIFT, F12, exec, grimblast --notify save area ~/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png"
       ];
       exec-once = [ 
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "swww-daemon"
         "sleep 1 && swww /etc/nixos/shokohypr/shokowall/oshino_ougi.png"
-        "pgrep waybar || waybar" 
+        "waybar &" 
         "nm-applet --indicator"
       ];
     };
