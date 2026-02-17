@@ -27,6 +27,9 @@ fn main() {
     if let Some(mut stdout) = child.stdout.take() {
         let _ = stdout.read_to_string(&mut query);
     }
+
+    let _ = child.wait_with_output();
+
     let query = query.trim();
     if query.is_empty(){ return; }
 
