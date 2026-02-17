@@ -20,7 +20,7 @@
   home.file.".bashrc".text = ''
     export PS1="\[\e[38;5;255m\]\u\[\e[m\]@\[\e[38;5;250m\]\h\[\e[m\]:\[\e[38;5;240m\]\w\[\e[m\]\$ "
   '';
-
+  
   gtk = {
     enable = true;
     theme = { name = "Adwaita-dark"; package = pkgs.gnome-themes-extra; };
@@ -65,7 +65,11 @@
     enable = true;
     settings = {
       monitor = ",preferred,auto,1";
-      input = { kb_layout = "tr"; follow_mouse = 1; };
+      xwayland.force_zero_scaling = true;
+      input = { 
+        kb_layout = "tr"; 
+        follow_mouse = 1; 
+      };
       general = {
         gaps_in = 0;
         gaps_out = 0;
@@ -93,6 +97,7 @@
         "stayfocused, class:(wofi)"
         "float, class:(pavucontrol|blueman-manager|nm-connection-editor)"
         "center, class:(pavucontrol|blueman-manager)"
+        "fullscreen, class:^steam_app_"
       ];
       bind = [
         "SUPER, Return, exec, kitty"
