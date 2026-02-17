@@ -11,14 +11,10 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [ 
-    pavucontrol 
-    blueman networkmanagerapplet wlogout brightnessctl
+    pavucontrol blueman networkmanagerapplet wlogout brightnessctl
     playerctl cava libnotify firefox-devedition-bin
-    font-awesome 
-    nerdfonts
-    papirus-icon-theme
-    kdePackages.dolphin
-    swww
+    font-awesome nerdfonts papirus-icon-theme
+    kdePackages.dolphin swww
   ];
 
   home.file.".bashrc".text = ''
@@ -78,13 +74,6 @@
         "col.inactive_border" = "rgba(1a1a1aff)";
         layout = "dwindle";
       };
-      dwindle = { preserve_split = true; force_split = 2; };
-      misc = {
-        disable_hyprland_logo = true;
-        disable_splash_rendering = true;
-        background_color = "0x000000";
-        force_default_wallpaper = 0;
-      };
       decoration = {
         rounding = 0;
         active_opacity = 1.0;
@@ -98,6 +87,10 @@
         };
       };
       windowrulev2 = [
+        "float, class:(shokomusic-finder-rs)"
+        "focusonactivate, class:(shokomusic-finder-rs)"
+        "float, class:(wofi)"
+        "stayfocused, class:(wofi)"
         "float, class:(pavucontrol|blueman-manager|nm-connection-editor)"
         "center, class:(pavucontrol|blueman-manager)"
       ];
@@ -106,14 +99,14 @@
         "SUPER, Q, killactive,"
         "SUPER, F10, fullscreen, 0"
         "SUPER, X, exec, pkill waybar || waybar"
-        "SUPER, V, togglefloating,"
         "SUPER, M, exec, pkill -KILL -u $USER" 
-        "SUPER, A, exec, firefox-developer-edition"
+        "SUPER, F, exec, firefox-developer-edition"
         "SUPER, D, exec, dolphin"
         "SUPER, left, movefocus, l"
         "SUPER, right, movefocus, r"
         "SUPER, up, movefocus, u"
         "SUPER, down, movefocus, d"
+        "SUPER, A, exec, /etc/nixos/shokohypr/modules/shokomusic-finder-rs/target/release/shokomusic-finder-rs"
       ];
       exec-once = [ 
         "swww-daemon"
@@ -121,6 +114,6 @@
         "pgrep waybar || waybar" 
         "nm-applet --indicator"
       ];
-    }; 
+    };
   };
 }
