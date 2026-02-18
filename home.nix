@@ -105,7 +105,7 @@
         "SUPER, F10, fullscreen, 0"
         "SUPER, X, exec, pkill waybar || waybar"
         "SUPER, M, exec, pkill -KILL -u $USER" 
-        "SUPER, F, exec, firefox-developer-edition"
+        "SUPER, F, exec, firefox-dev-custom"
         "SUPER, D, exec, dolphin"
         "SUPER, left, movefocus, l"
         "SUPER, right, movefocus, r"
